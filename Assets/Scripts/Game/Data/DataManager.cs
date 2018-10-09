@@ -31,22 +31,22 @@ public static class DataManager {
     /// <summary>
     /// 玩家分数.
     /// </summary>
-    public static List<int> scores = { 0, 0 };
+    public static List<int> scores = new List<int>{0, 0};
     /// <summary>
     /// 玩家等级.
     /// </summary>
-    public static List<int> levels = { 1, 1 };
-    public static List<int> lifes = { 3, 3 };
+    public static List<int> levels = new List<int>{1, 1};
+    public static List<int> lifes = new List<int>{3, 3};
 
     /// <summary>
     /// The enemy count a b c d.
     /// </summary>
-    public static List<int> enemyCounts = {0,0,0,0};
+    public static List<int> enemyCounts = new List<int> { 0, 0, 0, 0};
     /// <summary>
     /// The max enemys.
     /// </summary>
     public static int maxEnemys = 20;
-    public static List<int> enemyScores = { 100, 200, 300, 500 };
+    public static List<int> enemyScores = new List<int>{ 100, 200, 300, 500 };
     /// <summary>
     /// The stop.
     /// </summary>
@@ -57,7 +57,7 @@ public static class DataManager {
     //==========================================================================
 
     public static void NextLevel() {
-        enemyCounts = {0, 0, 0, 0};
+        enemyCounts = new List<int> { 0, 0, 0, 0 };
 
     }
 }

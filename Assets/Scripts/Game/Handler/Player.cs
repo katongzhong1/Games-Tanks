@@ -60,9 +60,9 @@ public class Player: MonoBehaviour {
     // Use this for initialization
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-        an = GetComponent<Animator>();
+        ani = GetComponent<Animator>();
         buttlet = (GameObject)Resources.Load("bullet");
-        level = DataManager.level[id];
+        level = DataManager.levels[id];
     }
 
     // Update is called once per Times
@@ -75,7 +75,6 @@ public class Player: MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (DataManager.gameover) return;
-        if ()
         Fire();
     }
 
@@ -113,7 +112,7 @@ public class Player: MonoBehaviour {
     /// </summary>
     private void UpdateAniState() {
         int bo = (Mathf.Abs(v) > 0.00001 || Mathf.Abs(h) > 0.00001) ? 1 : 0;
-        ani.SetInteger(bo);
+        ani.SetInteger("IS_RUN", bo);
     }
 
     /// <summary>

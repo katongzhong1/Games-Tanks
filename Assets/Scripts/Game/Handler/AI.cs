@@ -27,7 +27,7 @@ public class AI: MonoBehaviour {
     /// <summary>
     /// The current bullet count.
     /// </summary>
-    private bool curBulletCount;
+    private int curBulletCount;
     /// <summary>
     /// The life.
     /// </summary>
@@ -75,14 +75,14 @@ public class AI: MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag = "enemy") {
+        if (collision.gameObject.tag == "enemy") {
             rb.bodyType = RigidbodyType2D.Kinematic;
         }
         changeRotationTime = maxTime;
     }
 
     private void OnCollisionExit2D(Collision2D collision) {
-        if (collision.gameObject.tag = "enemy") {
+        if (collision.gameObject.tag == "enemy") {
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
@@ -160,7 +160,6 @@ public class AI: MonoBehaviour {
         if (life < 1) {
             DataManager.enemyCounts[enemyType] += 1;
             Destroy(this.gameObject);
-            Instantiate(bomb);
         }
     }
 }
