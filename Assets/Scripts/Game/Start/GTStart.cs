@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -20,6 +21,7 @@ public class GTStart: MonoBehaviour {
     // Private Properties
     //==========================================================================
 
+    private bool win;
     /// <summary>
     /// The background.
     /// </summary>
@@ -87,8 +89,20 @@ public class GTStart: MonoBehaviour {
     /// Awake this instance.
     /// </summary>
     private void Awake() {
-        this.PropertiesInitial();
-        this.createMap();
+        PropertiesInitial();
+        CreateMap();
+    }
+
+    private void Start() {
+        if (win) return;
+        int total = 0;
+        for (var i = 0; i < DataManager.enemyCounts.Count; i++) {
+            total += DataManager.enemyCounts[i];
+        }
+        if (total == DataManager.maxEnemys) {
+            win = true;
+            SceneManager.LoadScene("Score");
+        }
     }
 
     //==========================================================================
@@ -98,36 +112,36 @@ public class GTStart: MonoBehaviour {
     /// <summary>
     /// 根据二元数组生成地图
     /// </summary>
-    private void createMap() {
+    private void CreateMap() {
         int level = 1;
         for (var i = 0; i < 13; i++) {
             for (var j = 0; j < 13; j++ ) {
-                setStyleElement(map[level, i, j], i, j);
+                SetStyleElement(map[level, i, j], i, j);
             }
         }
     }
 
-    private void setStyleElement(int num, int i, int j) {
+    private void SetStyleElement(int num, int i, int j) {
         switch (num) {
-            case 1:  setElement(brick, i, j);    break;
-            case 2:  setElement(grass, i, j);    break;
-            case 3:  setElement(grid , i, j);    break;
-            case 4:  setElement(water, i, j);    break;
-            case 5:  setElement(brick_t, i, j);  break;
-            case 6:  setElement(brick_b, i, j);  break;
-            case 7:  setElement(brick_l, i, j);  break;
-            case 8:  setElement(brick_r, i, j);  break;
-            case 9:  setElement(grid_t, i, j);   break;
-            case 10: setElement(grid_b, i, j);   break;
-            case 11: setElement(grid_l, i, j);   break;
-            case 12: setElement(grid_r, i, j);   break;
-            case 13: setElement(brick_1l, i, j); break;
-            case 14: setElement(brick_1r, i, j); break;
-            case 15: setElement(home, i, j);     break;
+            case 1:  SetElement(brick, i, j);    break;
+            case 2:  SetElement(grass, i, j);    break;
+            case 3:  SetElement(grid , i, j);    break;
+            case 4:  SetElement(water, i, j);    break;
+            case 5:  SetElement(brick_t, i, j);  break;
+            case 6:  SetElement(brick_b, i, j);  break;
+            case 7:  SetElement(brick_l, i, j);  break;
+            case 8:  SetElement(brick_r, i, j);  break;
+            case 9:  SetElement(grid_t, i, j);   break;
+            case 10: SetElement(grid_b, i, j);   break;
+            case 11: SetElement(grid_l, i, j);   break;
+            case 12: SetElement(grid_r, i, j);   break;
+            case 13: SetElement(brick_1l, i, j); break;
+            case 14: SetElement(brick_1r, i, j); break;
+            case 15: SetElement(home, i, j);     break;
         }
     }
 
-    private void setElement(GameObject obj, int i, int j) {
+    private void SetElement(GameObject obj, int i, int j) {
         float tx = (-6f) + j;
         float ty = (6f) - i;
         Vector3 p = new Vector3(tx, ty, 0);
