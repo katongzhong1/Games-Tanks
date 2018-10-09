@@ -1,14 +1,13 @@
 ﻿<Properties StartupConfiguration="{F446716F-EDC7-98CC-089F-DE1E2BEFFCCC}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/Start/MapInitial.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/Start/GTStart.cs">
     <Files>
-      <File FileName="Assets/Scripts/Spirits/Wall.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Spirits/Water.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Spirits/Grass.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Spirits/Steel.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Begin.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Game/NewClass.cs" Line="8" Column="1" />
-      <File FileName="Assets/Scripts/Game/Start/MapInitial.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Spirits/Wall.cs" Line="17" Column="3" />
+      <File FileName="Assets/Scripts/Spirits/Water.cs" Line="22" Column="3" />
+      <File FileName="Assets/Scripts/Spirits/Grass.cs" Line="14" Column="2" />
+      <File FileName="Assets/Scripts/Spirits/Steel.cs" Line="13" Column="6" />
+      <File FileName="Assets/Scripts/Begin.cs" Line="13" Column="6" />
+      <File FileName="Assets/Scripts/Game/Start/GTStart.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

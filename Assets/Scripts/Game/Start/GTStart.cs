@@ -109,21 +109,21 @@ public class GTStart: MonoBehaviour {
 
     private void setStyleElement(int num, int i, int j) {
         switch (num) {
-            case 1:  setElement(brick, i, j); break;
-            case 2:  setElement(grass, i, j); break;
-            case 3:  setElement(grid , i, j); break;
-            case 4:  setElement(water, i, j); break;
-            case 5:  setElement(brick_t, i, j); break;
-            case 6:  setElement(brick_b, i, j); break;
-            case 7:  setElement(brick_l, i, j); break;
-            case 8:  setElement(brick_r, i, j); break;
-            case 9:  setElement(grid_t, i, j); break;
-            case 10: setElement(grid_b, i, j); break;
-            case 11: setElement(grid_l, i, j); break;
-            case 12: setElement(grid_r, i, j); break;
+            case 1:  setElement(brick, i, j);    break;
+            case 2:  setElement(grass, i, j);    break;
+            case 3:  setElement(grid , i, j);    break;
+            case 4:  setElement(water, i, j);    break;
+            case 5:  setElement(brick_t, i, j);  break;
+            case 6:  setElement(brick_b, i, j);  break;
+            case 7:  setElement(brick_l, i, j);  break;
+            case 8:  setElement(brick_r, i, j);  break;
+            case 9:  setElement(grid_t, i, j);   break;
+            case 10: setElement(grid_b, i, j);   break;
+            case 11: setElement(grid_l, i, j);   break;
+            case 12: setElement(grid_r, i, j);   break;
             case 13: setElement(brick_1l, i, j); break;
             case 14: setElement(brick_1r, i, j); break;
-            case 15: setElement(home, i, j); break;
+            case 15: setElement(home, i, j);     break;
         }
     }
 
