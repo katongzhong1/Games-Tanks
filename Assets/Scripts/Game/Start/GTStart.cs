@@ -31,19 +31,15 @@ public class GTStart: MonoBehaviour {
     /// </summary>
     private GameObject brick, grass, grid, water;
     /// <summary>
-    /// The brick t: 1100, b: 0011, l: 1010, r: 0101.
+    /// The brick
     /// 砖块和铁块是可以局部打穿
     /// </summary>
-    private GameObject brick_t, brick_b, brick_l, brick_r;
+    private GameObject brick_0011, brick_1100, brick_0101, brick_1010, brick_0010, brick_0001;
     /// <summary>
-    /// The brick 1l: 0010, 1r: 0001
-    /// </summary>
-    private GameObject brick_1l, brick_1r;
-    /// <summary>
-    /// The grid t: 1100, b: 0011, l: 1010, r: 0101.
+    /// The grid 
     /// 砖块和铁块是可以局部打穿
     /// </summary>
-    private GameObject grid_t, grid_b, grid_l, grid_r;
+    private GameObject grid_0011, grid_1100, grid_0101, grid_1010;
     /// <summary>
     /// 基地
     /// </summary>
@@ -113,10 +109,9 @@ public class GTStart: MonoBehaviour {
     /// 根据二元数组生成地图
     /// </summary>
     private void CreateMap() {
-        int level = 1;
         for (var i = 0; i < 13; i++) {
             for (var j = 0; j < 13; j++ ) {
-                SetStyleElement(map[level, i, j], i, j);
+                SetStyleElement(map[DataManager.stage, i, j], i, j);
             }
         }
     }
@@ -124,19 +119,19 @@ public class GTStart: MonoBehaviour {
     private void SetStyleElement(int num, int i, int j) {
         switch (num) {
             case 1:  SetElement(brick, i, j);    break;
-            case 2:  SetElement(grass, i, j);    break;
-            case 3:  SetElement(grid , i, j);    break;
-            case 4:  SetElement(water, i, j);    break;
-            case 5:  SetElement(brick_t, i, j);  break;
-            case 6:  SetElement(brick_b, i, j);  break;
-            case 7:  SetElement(brick_l, i, j);  break;
-            case 8:  SetElement(brick_r, i, j);  break;
-            case 9:  SetElement(grid_t, i, j);   break;
-            case 10: SetElement(grid_b, i, j);   break;
-            case 11: SetElement(grid_l, i, j);   break;
-            case 12: SetElement(grid_r, i, j);   break;
-            case 13: SetElement(brick_1l, i, j); break;
-            case 14: SetElement(brick_1r, i, j); break;
+            case 2:  SetElement(grid, i, j);     break;
+            case 3:  SetElement(water, i, j);    break;
+            case 4:  SetElement(grass, i, j);    break;
+            case 5:  SetElement(brick_0011, i, j);  break;
+            case 6:  SetElement(brick_1100, i, j);  break;
+            case 7:  SetElement(brick_0101, i, j);  break;
+            case 8:  SetElement(brick_1010, i, j);  break;
+            case 9:  SetElement(grid_0011, i, j);   break;
+            case 10: SetElement(grid_1100, i, j);   break;
+            case 11: SetElement(grid_0101, i, j);   break;
+            case 12: SetElement(grid_1010, i, j);   break;
+            case 13: SetElement(brick_0001, i, j); break;
+            case 14: SetElement(brick_0010, i, j); break;
             case 15: SetElement(home, i, j);     break;
         }
     }
@@ -157,22 +152,21 @@ public class GTStart: MonoBehaviour {
         //
         home  = (GameObject)Resources.Load("Prefabs/Element/Home");
         // 
-        brick = (GameObject)Resources.Load("Prefabs/Element/Brick");
+        brick = (GameObject)Resources.Load("Prefabs/Element/Brick/Brick");
         grass = (GameObject)Resources.Load("Prefabs/Element/Grass");
-        grid  = (GameObject)Resources.Load("Prefabs/Element/Grid");
+        grid  = (GameObject)Resources.Load("Prefabs/Element/Grid/Grid");
         water = (GameObject)Resources.Load("Prefabs/Element/Water");
         //
-        brick_t = (GameObject)Resources.Load("Prefabs/Element/Brick_t");
-        brick_b = (GameObject)Resources.Load("Prefabs/Element/Brick_b");
-        brick_l = (GameObject)Resources.Load("Prefabs/Element/Brick_l");
-        brick_r = (GameObject)Resources.Load("Prefabs/Element/Brick_r");
+        brick_0011 = (GameObject)Resources.Load("Prefabs/Element/Brick/Brick_0011");
+        brick_1100 = (GameObject)Resources.Load("Prefabs/Element/Brick/Brick_1100");
+        brick_0101 = (GameObject)Resources.Load("Prefabs/Element/Brick/Brick_0101");
+        brick_1010 = (GameObject)Resources.Load("Prefabs/Element/Brick/Brick_1010");
+        brick_0001 = (GameObject)Resources.Load("Prefabs/Element/Brick/Brick_0001");
+        brick_0010 = (GameObject)Resources.Load("Prefabs/Element/Brick/Brick_0010");
         // 
-        grid_t = (GameObject)Resources.Load("Prefabs/Element/Grid_t");
-        grid_b = (GameObject)Resources.Load("Prefabs/Element/Grid_b");
-        grid_l = (GameObject)Resources.Load("Prefabs/Element/Grid_l");
-        grid_r = (GameObject)Resources.Load("Prefabs/Element/Grid_r");
-        //
-        brick_1l = (GameObject)Resources.Load("Prefabs/Element/Brick_1l");
-        brick_1r = (GameObject)Resources.Load("Prefabs/Element/Brick_1r");
+        grid_0011 = (GameObject)Resources.Load("Prefabs/Element/Grid/Grid_0011");
+        grid_1100 = (GameObject)Resources.Load("Prefabs/Element/Grid/Grid_1100");
+        grid_0101 = (GameObject)Resources.Load("Prefabs/Element/Grid/Grid_0101");
+        grid_1010 = (GameObject)Resources.Load("Prefabs/Element/Grid/Grid_1010");
     }
 }
