@@ -9,6 +9,9 @@ public class GTTanks: MonoBehaviour {
 
     private Vector3[] enemyBorthPosition = new Vector3[3];
 
+    private GameObject player1;
+    private GameObject[] enemys = new GameObject[8];
+
     //==========================================================================
     // Mono Life Cycle
     //==========================================================================
@@ -18,6 +21,7 @@ public class GTTanks: MonoBehaviour {
         enemyBorthPosition[1] = new Vector3(-0f, 6f, 10f);
         enemyBorthPosition[2] = new Vector3(6f, 6f, 10f);
 
+        LoadPlayers();
     }
 
     // Use this for initialization

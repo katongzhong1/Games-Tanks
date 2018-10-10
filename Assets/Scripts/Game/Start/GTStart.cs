@@ -13,7 +13,7 @@ public class GTStart: MonoBehaviour {
     //==========================================================================
 
     /// <summary>
-    /// All.
+    /// 地图容器.
     /// </summary>
     public GameObject all;
 
@@ -71,8 +71,8 @@ public class GTStart: MonoBehaviour {
             {0, 1, 1, 1, 4, 4, 4, 2, 0, 0, 4, 1, 0},
             {0, 0, 0, 2, 4, 1, 0, 1, 0, 1, 0, 1, 0},
             {2, 1, 0, 2, 0, 1, 0, 1, 0, 0, 0, 1, 0},
-            {0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 2, 1, 0},
-            {0, 1, 0, 1, 0, 6, 1, 6, 0, 0, 0, 0, 0},
+            {0, 1, 0, 3, 0, 1, 1, 1, 0, 1, 2, 1, 0},
+            {0, 1, 0, 3, 0, 6, 6, 6, 0, 0, 0, 0, 0},
             {0, 1, 0, 0, 0, 14, 5, 13, 0, 1, 0, 1, 0},
             {0, 1, 0, 1, 0, 7, 15, 8, 0, 1, 1, 1, 0}
          }};
@@ -130,8 +130,8 @@ public class GTStart: MonoBehaviour {
             case 10: SetElement(grid_1100, i, j);   break;
             case 11: SetElement(grid_0101, i, j);   break;
             case 12: SetElement(grid_1010, i, j);   break;
-            case 13: SetElement(brick_0001, i, j); break;
-            case 14: SetElement(brick_0010, i, j); break;
+            case 13: SetElement(brick_0010, i, j); break;
+            case 14: SetElement(brick_0001, i, j); break;
             case 15: SetElement(home, i, j);     break;
         }
     }
