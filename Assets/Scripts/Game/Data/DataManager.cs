@@ -46,6 +46,11 @@ public static class DataManager {
     /// The max enemys.
     /// </summary>
     public static int maxEnemys = 20;
+    /// <summary>
+    /// The current enemys.
+    /// </summary>
+    public static int curEnemys = 0;
+    public static int curMaxEnemys = 6;
     public static List<int> enemyScores = new List<int>{ 100, 200, 300, 500 };
     /// <summary>
     /// The stop.

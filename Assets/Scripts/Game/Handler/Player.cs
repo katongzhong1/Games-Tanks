@@ -128,34 +128,40 @@ public class Player: MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        Destroy(collision.gameObject);
         switch (collision.gameObject.tag) {
             case "life":
+                Destroy(collision.gameObject);
                 DataManager.lifes[id] = DataManager.lifes[id] + 1;
                 break;
             case "shield":
+                Destroy(collision.gameObject);
                 this.transform.GetChild(0).gameObject.SetActive(true);
                 this.transform.GetChild(0).gameObject.SendMessage("startTime");
                 break;
             case "ship":
+                Destroy(collision.gameObject);
                 this.transform.GetChild(0).gameObject.SetActive(true);
                 this.transform.GetChild(0).gameObject.SendMessage("startTime");
                 break;
             case "star":
+                Destroy(collision.gameObject);
                 if (level < 4) {
                     level += 1;
                     DataManager.levels[id] = level;
                 }
                 break;
             case "gun":
+                Destroy(collision.gameObject);
                 DataManager.levels[id] = 4;
                 level = 4;
                 break;
             case "bomb":
+                Destroy(collision.gameObject);
                 //TODO: 定时
                 Invoke("BombAwake", 10f);
                 break;
             case "explosion":
+                Destroy(collision.gameObject);
                 GameObject obj = GameObject.FindGameObjectWithTag("enemys");
                 for (var i = 0; i < obj.transform.childCount; i++) {
                     obj.transform.GetChild(i).gameObject.SendMessage("die");

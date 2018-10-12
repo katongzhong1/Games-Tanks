@@ -23,7 +23,7 @@ public class GTTanks: MonoBehaviour {
     /// The enemys.
     /// </summary>
     private GameObject[] enemys = new GameObject[8];
-    Vector3 playerOutPosition = new Vector3(-1.448073f, -6.029788f, 10f);
+    Vector3 playerOutPosition = new Vector3(-1.75f, -6f, -1f);
 
     //==========================================================================
     // Mono Life Cycle
@@ -38,6 +38,8 @@ public class GTTanks: MonoBehaviour {
         //LoadEnemys();
         // ===> player
         Instantiate(player1, playerOutPosition, Quaternion.identity);
+        // ===> 开启协程
+        StartCoroutine(CreateEnemy());
     }
 
     // Use this for initialization
@@ -68,5 +70,23 @@ public class GTTanks: MonoBehaviour {
     private void LoadPlayers() {
         //borthStar = (GameObject)Resources.Load("Prefabs/Element/Borth/BorthStar");
         player1 = (GameObject)Resources.Load("Prefabs/Element/Player/Player1");
+    }
+
+    IEnumerator CreateEnemy() {
+        while (true) {
+            if (DataManager.curEnemys < 20) {
+                yield return new WaitForSeconds(3.0f);
+                //坦克数量=>坦克类型=>取位置=>生坦克
+                int l = DataManager.maxEnemys - DataManager.dieEnemys;
+                int need = DataManager.curMaxEnemys - DataManager.curEnemys;
+                int num = l < need ? l : need;
+                num = num > 3 ? 3 : num;
+                for (var i = 0; i < num; i++) {
+                    int type = DataManager.enemys[DataManager.stage, DataManager.dieEnemys + DataManager.curEnemys];
+                    Instantiate(enemys[type], enemyBorthPosition[i], Quaternion.identity);
+                }
+            }
+            yield return 0;
+        }
     }
 }
