@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Begin.cs" />
+    <Compile Include="Assets\Scripts\Element\Bullet.cs" />
     <Compile Include="Assets\Scripts\Element\Type.cs" />
     <Compile Include="Assets\Scripts\Game\Data\DataManager.cs" />
     <Compile Include="Assets\Scripts\Game\Handler\AI.cs" />
