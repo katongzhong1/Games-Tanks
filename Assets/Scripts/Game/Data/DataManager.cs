@@ -46,6 +46,7 @@ public static class DataManager {
     /// The max enemys.
     /// </summary>
     public static int maxEnemys = 20;
+    public static int dieEnemys = 0;
     /// <summary>
     /// The current enemys.
     /// </summary>
