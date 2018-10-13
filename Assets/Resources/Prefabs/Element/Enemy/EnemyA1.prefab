@@ -38,9 +38,9 @@ GameObject:
   - component: {fileID: 4960806464279362}
   - component: {fileID: 212450420968410086}
   - component: {fileID: 95381848974158040}
-  - component: {fileID: 61869925570361416}
   - component: {fileID: 114158945207906256}
-  - component: {fileID: 50567717706409262}
+  - component: {fileID: 61552641082739192}
+  - component: {fileID: 50012190261201488}
   m_Layer: 0
   m_Name: EnemyA1
   m_TagString: enemy
@@ -75,7 +75,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50567717706409262
+--- !u!50 &50012190261201488
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -84,18 +84,18 @@ Rigidbody2D:
   m_GameObject: {fileID: 1863909119096494}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!61 &61869925570361416
+  m_Constraints: 0
+--- !u!61 &61552641082739192
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.89, y: 0.89}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!95 &95372973213946064
 Animator:
