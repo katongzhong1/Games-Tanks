@@ -14,7 +14,7 @@ public class AI: MonoBehaviour {
     /// <summary>
     /// 是否是彩色坦克.
     /// </summary>
-    public bool color;
+    //public bool color;
 
     //==========================================================================
     // Private Properties
@@ -58,7 +58,8 @@ public class AI: MonoBehaviour {
         InitialSpeedAndLife();
         ani = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        bullet = (GameObject)Resources.Load("enemyBullet");
+        this.transform.GetChild(0).gameObject.SetActive(false);
+        bullet = (GameObject)Resources.Load("Prefabs/Element/Bullet");
         maxTime = Random.Range(0.5f, 2f);
         InvokeRepeating("Fire", 0f, 1f);
     }
@@ -75,15 +76,21 @@ public class AI: MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
+        //Move();
         if (collision.gameObject.tag == "enemy") {
-            rb.bodyType = RigidbodyType2D.Kinematic;
+            Debug.Log("===> Kinematic");
+            //rb.bodyType = RigidbodyType2D.Kinematic;
+            changeRotationTime = maxTime;
+            //Move();
+        } else if (collision.gameObject.tag == "player") {
+            changeRotationTime = maxTime;
         }
-        changeRotationTime = maxTime;
     }
 
     private void OnCollisionExit2D(Collision2D collision) {
         if (collision.gameObject.tag == "enemy") {
-            rb.bodyType = RigidbodyType2D.Dynamic;
+            Debug.Log("===> Dynamic");
+            //rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
 
@@ -134,7 +141,7 @@ public class AI: MonoBehaviour {
 
     private void UpdateState() {
         int bo = (Mathf.Abs(v) > 0.00001 || Mathf.Abs(h) > 0.00001) ? 1 : 0;
-        ani.SetInteger("IS_RUN", bo);
+        //ani.SetInteger("IS_RUN", bo);
     }
 
     private void PlayRotation() {

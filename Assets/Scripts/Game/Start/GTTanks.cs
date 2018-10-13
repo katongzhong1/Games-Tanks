@@ -30,12 +30,12 @@ public class GTTanks: MonoBehaviour {
     //==========================================================================
 
     private void Awake() {
-        enemyBorthPosition[0] = new Vector3(-6f, 6f, 10f);
-        enemyBorthPosition[1] = new Vector3(-0f, 6f, 10f);
-        enemyBorthPosition[2] = new Vector3(6f, 6f, 10f);
+        enemyBorthPosition[0] = new Vector3(-6f, 6f, -1f);
+        enemyBorthPosition[1] = new Vector3(-0f, 6f, -1f);
+        enemyBorthPosition[2] = new Vector3(6f, 6f, -1f);
         // ===> 加载 GameObject
         LoadPlayers();
-        //LoadEnemys();
+        LoadEnemys();
         // ===> player
         Instantiate(player1, playerOutPosition, Quaternion.identity);
         // ===> 开启协程
@@ -75,16 +75,17 @@ public class GTTanks: MonoBehaviour {
     IEnumerator CreateEnemy() {
         while (true) {
             if (DataManager.curEnemys < 20) {
-                yield return new WaitForSeconds(3.0f);
                 //坦克数量=>坦克类型=>取位置=>生坦克
                 int l = DataManager.maxEnemys - DataManager.dieEnemys;
                 int need = DataManager.curMaxEnemys - DataManager.curEnemys;
                 int num = l < need ? l : need;
                 num = num > 3 ? 3 : num;
                 for (var i = 0; i < num; i++) {
+                    DataManager.curEnemys += 1;
                     int type = DataManager.enemys[DataManager.stage, DataManager.dieEnemys + DataManager.curEnemys];
                     Instantiate(enemys[type], enemyBorthPosition[i], Quaternion.identity);
                 }
+                yield return new WaitForSeconds(3.0f);
             }
             yield return 0;
         }

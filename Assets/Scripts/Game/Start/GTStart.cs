@@ -86,25 +86,25 @@ public class GTStart: MonoBehaviour {
 
     private void SetStyleElement(int num, int i, int j) {
         switch (num) {
-            case 1:  SetElement(brick, i, j);    break;
-            case 2:  SetElement(grid, i, j);     break;
-            case 3:  SetElement(water, i, j);    break;
-            case 4:  SetElement(grass, i, j);    break;
-            case 5:  SetElement(brick_0011, i, j);  break;
-            case 6:  SetElement(brick_1100, i, j);  break;
-            case 7:  SetElement(brick_0101, i, j);  break;
-            case 8:  SetElement(brick_1010, i, j);  break;
-            case 9:  SetElement(grid_0011, i, j);   break;
-            case 10: SetElement(grid_1100, i, j);   break;
-            case 11: SetElement(grid_0101, i, j);   break;
-            case 12: SetElement(grid_1010, i, j);   break;
-            case 13: SetElement(brick_0010, i, j); break;
-            case 14: SetElement(brick_0001, i, j); break;
-            case 15: SetElement(home, i, j);     break;
+            case 1:  SetElement(brick, i, j, 0);    break;
+            case 2:  SetElement(grid, i, j, 0);     break;
+            case 3:  SetElement(water, i, j, 0);    break;
+            case 4:  SetElement(grass, i, j, -3);    break;
+            case 5:  SetElement(brick_0011, i, j, 0);  break;
+            case 6:  SetElement(brick_1100, i, j, 0);  break;
+            case 7:  SetElement(brick_0101, i, j, 0);  break;
+            case 8:  SetElement(brick_1010, i, j, 0);  break;
+            case 9:  SetElement(grid_0011, i, j, 0);   break;
+            case 10: SetElement(grid_1100, i, j, 0);   break;
+            case 11: SetElement(grid_0101, i, j, 0);   break;
+            case 12: SetElement(grid_1010, i, j, 0);   break;
+            case 13: SetElement(brick_0010, i, j, 0); break;
+            case 14: SetElement(brick_0001, i, j, 0); break;
+            case 15: SetElement(home, i, j, 0);     break;
         }
     }
 
-    private void SetElement(GameObject obj, int i, int j) {
+    private void SetElement(GameObject obj, int i, int j, int z) {
         float tx = (-6f) + j;
         float ty = (6f) - i;
         Vector3 p = new Vector3(tx, ty, 0);

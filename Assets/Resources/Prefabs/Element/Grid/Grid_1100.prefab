@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 61448604086560880}
   m_Layer: 0
   m_Name: grid_1
-  m_TagString: Untagged
+  m_TagString: grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 61696488320765330}
   m_Layer: 0
   m_Name: grid_0
-  m_TagString: Untagged
+  m_TagString: grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

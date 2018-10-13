@@ -112,7 +112,7 @@ public class Player: MonoBehaviour {
     /// </summary>
     private void UpdateAniState() {
         int bo = (Mathf.Abs(v) > 0.00001 || Mathf.Abs(h) > 0.00001) ? 1 : 0;
-        ani.SetInteger("IS_RUN", bo);
+        //ani.SetInteger("IS_RUN", bo);
     }
 
     /// <summary>

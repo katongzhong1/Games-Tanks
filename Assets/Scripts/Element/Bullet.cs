@@ -23,6 +23,10 @@ public class Bullet: MonoBehaviour {
     /// </summary>
     private Rigidbody2D rb;
     /// <summary>
+    /// 子弹发射的声音
+    /// </summary>
+    private AudioSource music;
+    /// <summary>
     /// The small explosion.
     /// </summary>
     private GameObject smallExplosion, bigExplosion;
@@ -33,11 +37,14 @@ public class Bullet: MonoBehaviour {
     // Use this for initialization
     void Start() {
         rb = GetComponent<Rigidbody2D>();
+        music = GetComponent<AudioSource>();
         Vector3 v3 = transform.up.normalized;
         rb.velocity = v3 * speed;
 
-        smallExplosion = (GameObject)Resources.Load("Prefabs/Elemet/Explosion/SmallExplosion");
-        bigExplosion   = (GameObject)Resources.Load("Prefabs/Elemet/Explosion/BigExplosion");
+        smallExplosion = (GameObject)Resources.Load("Prefabs/Element/Explosion/SmallExplosion");
+        bigExplosion   = (GameObject)Resources.Load("Prefabs/Element/Explosion/BigExplosion");
+        
+        music.Play();
     }
 
     // Update is called once per frame
@@ -51,15 +58,16 @@ public class Bullet: MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         // 销毁子弹
-        Destroy(this.gameObject);
         // 更新子弹数
         switch (collision.tag) {
             case "brick":
+                Destroy(this.gameObject);
                 Destroy(collision.gameObject);
                 // 触发子弹命中动画
                 Instantiate(smallExplosion, this.transform.position, Quaternion.identity);
                 break;
             case "grid":
+                Destroy(this.gameObject);
                 if (type == 0 && DataManager.levels[0] == 3) {
                     //TODO: 判断是否
                     Destroy(collision.gameObject);
@@ -68,6 +76,8 @@ public class Bullet: MonoBehaviour {
             case "home":
                 break;
             case "bound":
+                Destroy(this.gameObject);
+                Instantiate(smallExplosion, this.transform.position, Quaternion.identity);
                 break;
             case "enemy":
                 break;
