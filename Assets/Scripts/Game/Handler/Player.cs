@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-public class Player: MonoBehaviour {
+public class Player : MonoBehaviour {
 
     //==========================================================================
     // Private Properties
@@ -30,7 +30,7 @@ public class Player: MonoBehaviour {
     /// <summary>
     /// The buttlet.
     /// </summary>
-    private GameObject buttlet;
+    private GameObject bullet;
     /// <summary>
     /// The rb.
     /// </summary>
@@ -58,120 +58,120 @@ public class Player: MonoBehaviour {
     //==========================================================================
 
     // Use this for initialization
-    void Start() {
-        rb = GetComponent<Rigidbody2D>();
-        ani = GetComponent<Animator>();
-        buttlet = (GameObject)Resources.Load("bullet");
+    void Start () {
+        rb = GetComponent<Rigidbody2D> ();
+        ani = GetComponent<Animator> ();
+        bullet = (GameObject) Resources.Load ("Prefabs/Element/Bullet");
         level = DataManager.levels[id];
     }
 
     // Update is called once per Times
-    private void FixedUpdate() {
+    private void FixedUpdate () {
         if (DataManager.gameover) return;
-        Move();
-        UpdateAniState();
+        Move ();
+        UpdateAniState ();
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update () {
         if (DataManager.gameover) return;
-        Fire();
+        Fire ();
     }
 
     //==========================================================================
     // Public Properties
     //==========================================================================
 
-    private void Move() {
+    private void Move () {
         // 竖直
-        v = Input.GetAxisRaw("Vertical");
-        PlayRotation();
-        transform.Translate(transform.up.normalized * Mathf.Abs(v) * speed * Time.fixedDeltaTime, Space.World);
+        v = Input.GetAxisRaw ("Vertical");
+        PlayRotation ();
+        transform.Translate (transform.up.normalized * Mathf.Abs (v) * speed * Time.fixedDeltaTime, Space.World);
         // 判断是否为0的方式
-        if (Mathf.Abs(v) > 0.00001) return;
+        if (Mathf.Abs (v) > 0.00001) return;
         // 水平 
-        h = Input.GetAxisRaw("Horizontal");
-        PlayRotation();
-        transform.Translate(transform.up.normalized * Mathf.Abs(h) * speed * Time.fixedDeltaTime, Space.World);
+        h = Input.GetAxisRaw ("Horizontal");
+        PlayRotation ();
+        transform.Translate (transform.up.normalized * Mathf.Abs (h) * speed * Time.fixedDeltaTime, Space.World);
     }
 
-    private void PlayRotation() {
+    private void PlayRotation () {
         if (v > 0) {
             transform.rotation = Quaternion.identity;
         } else if (v < 0) {
-            transform.rotation = Quaternion.Euler(0, 0, -180);
+            transform.rotation = Quaternion.Euler (0, 0, -180);
         } else if (h > 0) {
-            transform.rotation = Quaternion.Euler(0, 0, -90);
+            transform.rotation = Quaternion.Euler (0, 0, -90);
         } else if (h < 0) {
-            transform.rotation = Quaternion.Euler(0, 0, 90);
+            transform.rotation = Quaternion.Euler (0, 0, 90);
         }
     }
 
     /// <summary>
     /// Updates the state of the ani.
     /// </summary>
-    private void UpdateAniState() {
-        int bo = (Mathf.Abs(v) > 0.00001 || Mathf.Abs(h) > 0.00001) ? 1 : 0;
+    private void UpdateAniState () {
+        int bo = (Mathf.Abs (v) > 0.00001 || Mathf.Abs (h) > 0.00001) ? 1 : 0;
         //ani.SetInteger("IS_RUN", bo);
     }
 
     /// <summary>
     /// 开火
     /// </summary>
-    private void Fire() {
+    private void Fire () {
         if (curButtlet > maxButtlet) return;
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown (KeyCode.Space)) {
             //TODO: 子弹与等级相关
             curButtlet += 1;
-            Instantiate(buttlet, transform.position, Quaternion.Euler(transform.eulerAngles));
+            Instantiate (bullet, transform.position, Quaternion.Euler (transform.eulerAngles));
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerEnter2D (Collider2D collision) {
         switch (collision.gameObject.tag) {
             case "life":
-                Destroy(collision.gameObject);
+                Destroy (collision.gameObject);
                 DataManager.lifes[id] = DataManager.lifes[id] + 1;
                 break;
             case "shield":
-                Destroy(collision.gameObject);
-                this.transform.GetChild(0).gameObject.SetActive(true);
-                this.transform.GetChild(0).gameObject.SendMessage("startTime");
+                Destroy (collision.gameObject);
+                this.transform.GetChild (0).gameObject.SetActive (true);
+                this.transform.GetChild (0).gameObject.SendMessage ("startTime");
                 break;
             case "ship":
-                Destroy(collision.gameObject);
-                this.transform.GetChild(0).gameObject.SetActive(true);
-                this.transform.GetChild(0).gameObject.SendMessage("startTime");
+                Destroy (collision.gameObject);
+                this.transform.GetChild (0).gameObject.SetActive (true);
+                this.transform.GetChild (0).gameObject.SendMessage ("startTime");
                 break;
             case "star":
-                Destroy(collision.gameObject);
+                Destroy (collision.gameObject);
                 if (level < 4) {
                     level += 1;
                     DataManager.levels[id] = level;
                 }
                 break;
             case "gun":
-                Destroy(collision.gameObject);
+                Destroy (collision.gameObject);
                 DataManager.levels[id] = 4;
                 level = 4;
                 break;
             case "bomb":
-                Destroy(collision.gameObject);
+                Destroy (collision.gameObject);
                 //TODO: 定时
-                Invoke("BombAwake", 10f);
+                Invoke ("BombAwake", 10f);
                 break;
             case "explosion":
-                Destroy(collision.gameObject);
-                GameObject obj = GameObject.FindGameObjectWithTag("enemys");
+                Destroy (collision.gameObject);
+                GameObject obj = GameObject.FindGameObjectWithTag ("enemys");
                 for (var i = 0; i < obj.transform.childCount; i++) {
-                    obj.transform.GetChild(i).gameObject.SendMessage("die");
+                    obj.transform.GetChild (i).gameObject.SendMessage ("die");
                     DataManager.newTanksCount += 1;
                 }
                 break;
         }
     }
 
-    private void BombAwake() {
+    private void BombAwake () {
         DataManager.stop = false;
     }
 }

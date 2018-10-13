@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-public class AI: MonoBehaviour {
+public class AI : MonoBehaviour {
 
     //==========================================================================
     // Public Properties
@@ -54,31 +54,31 @@ public class AI: MonoBehaviour {
     //==========================================================================
 
     // Use this for initialization
-    private void Start() {
-        InitialSpeedAndLife();
-        ani = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
-        this.transform.GetChild(0).gameObject.SetActive(false);
-        bullet = (GameObject)Resources.Load("Prefabs/Element/Bullet");
-        maxTime = Random.Range(0.5f, 2f);
-        InvokeRepeating("Fire", 0f, 1f);
+    private void Start () {
+        InitialSpeedAndLife ();
+        ani = GetComponent<Animator> ();
+        rb = GetComponent<Rigidbody2D> ();
+        this.transform.GetChild (0).gameObject.SetActive (false);
+        bullet = (GameObject) Resources.Load ("Prefabs/Element/Bullet");
+        maxTime = Random.Range (0.5f, 2f);
+        InvokeRepeating ("Fire", 0f, 1f);
     }
 
     // Update is called once per Times
-    private void FixedUpdate() {
+    private void FixedUpdate () {
         if (DataManager.stop) return;
-        Move();
+        Move ();
     }
 
     // Update is called once per frame
-    private void Update() {
+    private void Update () {
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnCollisionEnter2D (Collision2D collision) {
         //Move();
         if (collision.gameObject.tag == "enemy") {
-            Debug.Log("===> Kinematic");
+            Debug.Log ("===> Kinematic");
             //rb.bodyType = RigidbodyType2D.Kinematic;
             changeRotationTime = maxTime;
             //Move();
@@ -87,9 +87,9 @@ public class AI: MonoBehaviour {
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision) {
+    private void OnCollisionExit2D (Collision2D collision) {
         if (collision.gameObject.tag == "enemy") {
-            Debug.Log("===> Dynamic");
+            Debug.Log ("===> Dynamic");
             //rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
@@ -100,16 +100,23 @@ public class AI: MonoBehaviour {
 
     private void InitialSpeedAndLife () {
         switch (enemyType) {
-            case 0: break;
-            case 1: speed = 5f; break;
-            case 2: life += 1;  break;
-            case 3: life += 2;  break;
+            case 0:
+                break;
+            case 1:
+                speed = 5f;
+                break;
+            case 2:
+                life += 1;
+                break;
+            case 3:
+                life += 2;
+                break;
         }
     }
 
-    private void Move() {
+    private void Move () {
         if (changeRotationTime >= maxTime) {
-            int num = Random.Range(0, 8);
+            int num = Random.Range (0, 8);
             if (num > 5) {
                 v = -1;
                 h = 0;
@@ -124,49 +131,49 @@ public class AI: MonoBehaviour {
                 h = 1;
             }
             changeRotationTime = 0;
-            maxTime = Random.Range(0.5f, 2f);
+            maxTime = Random.Range (0.5f, 2f);
         } else {
             changeRotationTime += Time.fixedDeltaTime;
         }
-        UpdateState();
+        UpdateState ();
 
-        PlayRotation();
-        transform.Translate(transform.up.normalized * Mathf.Abs(v) * speed * Time.fixedDeltaTime, Space.World);
+        PlayRotation ();
+        transform.Translate (transform.up.normalized * Mathf.Abs (v) * speed * Time.fixedDeltaTime, Space.World);
         // 判断是否为0的方式
-        if (Mathf.Abs(v) > 0.00001) return;
+        if (Mathf.Abs (v) > 0.00001) return;
         // 水平 
-        PlayRotation();
-        transform.Translate(transform.up.normalized * Mathf.Abs(h) * speed * Time.fixedDeltaTime, Space.World);
+        PlayRotation ();
+        transform.Translate (transform.up.normalized * Mathf.Abs (h) * speed * Time.fixedDeltaTime, Space.World);
     }
 
-    private void UpdateState() {
-        int bo = (Mathf.Abs(v) > 0.00001 || Mathf.Abs(h) > 0.00001) ? 1 : 0;
+    private void UpdateState () {
+        int bo = (Mathf.Abs (v) > 0.00001 || Mathf.Abs (h) > 0.00001) ? 1 : 0;
         //ani.SetInteger("IS_RUN", bo);
     }
 
-    private void PlayRotation() {
+    private void PlayRotation () {
         if (v > 0) {
             transform.rotation = Quaternion.identity;
         } else if (v < 0) {
-            transform.rotation = Quaternion.Euler(0, 0, -180);
+            transform.rotation = Quaternion.Euler (0, 0, -180);
         } else if (h > 0) {
-            transform.rotation = Quaternion.Euler(0, 0, -90);
+            transform.rotation = Quaternion.Euler (0, 0, -90);
         } else if (h < 0) {
-            transform.rotation = Quaternion.Euler(0, 0, 90);
+            transform.rotation = Quaternion.Euler (0, 0, 90);
         }
     }
 
-    private void Fire() {
+    private void Fire () {
         if (DataManager.stop) return;
         if (curBulletCount > 1) return;
-        GameObject temp = (GameObject)Instantiate(bullet, transform.position, Quaternion.Euler(transform.eulerAngles));
+        GameObject temp = (GameObject) Instantiate (bullet, transform.position, Quaternion.Euler (transform.eulerAngles));
     }
 
-    private void Short() {
+    private void Short () {
         life -= 1;
         if (life < 1) {
             DataManager.enemyCounts[enemyType] += 1;
-            Destroy(this.gameObject);
+            Destroy (this.gameObject);
         }
     }
 }
