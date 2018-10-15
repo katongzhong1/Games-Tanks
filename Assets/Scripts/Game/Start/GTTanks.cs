@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class GTTanks: MonoBehaviour {
+public class GTTanks : MonoBehaviour {
 
     //==========================================================================
     // Private Properties
@@ -18,32 +18,32 @@ public class GTTanks: MonoBehaviour {
     /// <summary>
     /// The enemys.
     /// </summary>
-    Vector3 playerOutPosition = new Vector3(-1.75f, -6f, -1f);
+    Vector3 playerOutPosition = new Vector3 (-1.75f, -6f, -1f);
 
     //==========================================================================
     // Mono Life Cycle
     //==========================================================================
 
-    private void Awake() {
-        enemyBorthPosition[0] = new Vector3(-6f, 6f, -1f);
-        enemyBorthPosition[1] = new Vector3(-0f, 6f, -1f);
-        enemyBorthPosition[2] = new Vector3(6f, 6f, -1f);
+    private void Awake () {
+        enemyBorthPosition[0] = new Vector3 (-6f, 6f, -1f);
+        enemyBorthPosition[1] = new Vector3 (-0f, 6f, -1f);
+        enemyBorthPosition[2] = new Vector3 (6f, 6f, -1f);
         // ===> 加载 GameObject
-        enemyBorth  = (GameObject)Resources.Load("Prefabs/Element/Borth/EnemyBorth");
-        playerBorth = (GameObject)Resources.Load("Prefabs/Element/Borth/PlayerBorth");
+        enemyBorth = (GameObject) Resources.Load ("Prefabs/Element/Borth/EnemyBorth");
+        playerBorth = (GameObject) Resources.Load ("Prefabs/Element/Borth/PlayerBorth");
         // ===> player
-        Instantiate(playerBorth, playerOutPosition, Quaternion.identity);
+        Instantiate (playerBorth, playerOutPosition, Quaternion.identity);
         // ===> 开启协程
-        StartCoroutine(CreateEnemy());
+        StartCoroutine (CreateEnemy ());
     }
 
     // Use this for initialization
-    void Start() {
+    void Start () {
 
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update () {
 
     }
 
@@ -51,7 +51,7 @@ public class GTTanks: MonoBehaviour {
     // Private Functions
     //==========================================================================
 
-    IEnumerator CreateEnemy() {
+    IEnumerator CreateEnemy () {
         while (true) {
             if (DataManager.curEnemys < 20) {
                 //坦克数量=>坦克类型=>取位置=>生坦克
@@ -60,10 +60,9 @@ public class GTTanks: MonoBehaviour {
                 int num = l < need ? l : need;
                 num = num > 3 ? 3 : num;
                 for (var i = 0; i < num; i++) {
-                    DataManager.curEnemys += 1;
-                    Instantiate(enemyBorth, enemyBorthPosition[i], Quaternion.identity);
+                    Instantiate (enemyBorth, enemyBorthPosition[i], Quaternion.identity);
                 }
-                yield return new WaitForSeconds(3.0f);
+                yield return new WaitForSeconds (3.0f);
             }
             yield return 0;
         }

@@ -80,10 +80,15 @@ public class AI : MonoBehaviour {
         if (collision.gameObject.tag == "enemy") {
             Debug.Log ("===> Kinematic");
             //rb.bodyType = RigidbodyType2D.Kinematic;
+            if (rb.mass == 1) {
+                Rigidbody2D rbt = collision.transform.GetComponent<Rigidbody2D> ();
+                rbt.mass = 100000;
+            }
             changeRotationTime = maxTime;
-            //Move();
+            Move ();
         } else if (collision.gameObject.tag == "player") {
             changeRotationTime = maxTime;
+            Move ();
         }
     }
 
@@ -91,6 +96,8 @@ public class AI : MonoBehaviour {
         if (collision.gameObject.tag == "enemy") {
             Debug.Log ("===> Dynamic");
             //rb.bodyType = RigidbodyType2D.Dynamic;
+            Rigidbody2D rbt = collision.transform.GetComponent<Rigidbody2D> ();
+            rbt.mass = 1;
         }
     }
 

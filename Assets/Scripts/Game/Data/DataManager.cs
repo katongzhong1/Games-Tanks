@@ -51,14 +51,14 @@ public static class DataManager {
     /// The current enemys.
     /// </summary>
     public static int curEnemys = 0;
-    public static int curMaxEnemys = 6;
+    public static int curMaxEnemys = 20;
     public static List<int> enemyScores = new List<int> { 100, 200, 300, 500 };
     /// <summary>
     /// The stop.
     /// </summary>
     public static bool stop;
     public static int[, ] enemys = { { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 2, 2 },
-        { 1, 6, 2, 3, 2, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0 }
+        { 6, 6, 2, 3, 2, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0 }
     };
     /// <summary>
     /// The maps.
