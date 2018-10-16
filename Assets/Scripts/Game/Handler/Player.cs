@@ -34,7 +34,7 @@ public class Player : MonoBehaviour {
     /// <summary>
     /// The rb.
     /// </summary>
-    private Rigidbody2D rb;
+    private CharacterController chart;
 
     //==========================================================================
     // Public Properties
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        rb = GetComponent<Rigidbody2D> ();
+        chart = GetComponent<CharacterController> ();
         ani = GetComponent<Animator> ();
         bullet = (GameObject) Resources.Load ("Prefabs/Element/Bullet");
         level = DataManager.levels[id];
@@ -86,13 +86,13 @@ public class Player : MonoBehaviour {
         // 竖直
         v = Input.GetAxisRaw ("Vertical");
         PlayRotation ();
-        transform.Translate (transform.up.normalized * Mathf.Abs (v) * speed * Time.fixedDeltaTime, Space.World);
+        chart.Move(transform.up.normalized * Mathf.Abs (v) * speed * Time.fixedDeltaTime);
         // 判断是否为0的方式
         if (Mathf.Abs (v) > 0.00001) return;
         // 水平 
         h = Input.GetAxisRaw ("Horizontal");
         PlayRotation ();
-        transform.Translate (transform.up.normalized * Mathf.Abs (h) * speed * Time.fixedDeltaTime, Space.World);
+        chart.Move(transform.up.normalized * Mathf.Abs (h) * speed * Time.fixedDeltaTime);
     }
 
     private void PlayRotation () {

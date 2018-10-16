@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/Data/DataManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Element/Explosion.cs">
     <Files>
       <File FileName="Assets/Scripts/Game/Start/GTStart.cs" Line="105" Column="6" />
       <File FileName="Assets/Scripts/Game/Data/DataManager.cs" Line="54" Column="41" />

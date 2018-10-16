@@ -47,7 +47,7 @@ public class AI : MonoBehaviour {
     private float changeRotationTime;
     private float maxTime;
     private Animator ani;
-    private Rigidbody2D rb;
+    private CharacterController chart;
 
     //==========================================================================
     // Life Cycle
@@ -57,7 +57,7 @@ public class AI : MonoBehaviour {
     private void Start () {
         InitialSpeedAndLife ();
         ani = GetComponent<Animator> ();
-        rb = GetComponent<Rigidbody2D> ();
+        chart = GetComponent<CharacterController> ();
         this.transform.GetChild (0).gameObject.SetActive (false);
         bullet = (GameObject) Resources.Load ("Prefabs/Element/Bullet");
         maxTime = Random.Range (0.5f, 2f);
@@ -73,32 +73,6 @@ public class AI : MonoBehaviour {
     // Update is called once per frame
     private void Update () {
 
-    }
-
-    private void OnCollisionEnter2D (Collision2D collision) {
-        //Move();
-        if (collision.gameObject.tag == "enemy") {
-            Debug.Log ("===> Kinematic");
-            //rb.bodyType = RigidbodyType2D.Kinematic;
-            if (rb.mass == 1) {
-                Rigidbody2D rbt = collision.transform.GetComponent<Rigidbody2D> ();
-                rbt.mass = 100000;
-            }
-            changeRotationTime = maxTime;
-            Move ();
-        } else if (collision.gameObject.tag == "player") {
-            changeRotationTime = maxTime;
-            Move ();
-        }
-    }
-
-    private void OnCollisionExit2D (Collision2D collision) {
-        if (collision.gameObject.tag == "enemy") {
-            Debug.Log ("===> Dynamic");
-            //rb.bodyType = RigidbodyType2D.Dynamic;
-            Rigidbody2D rbt = collision.transform.GetComponent<Rigidbody2D> ();
-            rbt.mass = 1;
-        }
     }
 
     //==========================================================================
@@ -145,12 +119,12 @@ public class AI : MonoBehaviour {
         UpdateState ();
 
         PlayRotation ();
-        transform.Translate (transform.up.normalized * Mathf.Abs (v) * speed * Time.fixedDeltaTime, Space.World);
+        chart.Move (transform.up.normalized * Mathf.Abs (v) * speed * Time.fixedDeltaTime);
         // 判断是否为0的方式
         if (Mathf.Abs (v) > 0.00001) return;
         // 水平 
         PlayRotation ();
-        transform.Translate (transform.up.normalized * Mathf.Abs (h) * speed * Time.fixedDeltaTime, Space.World);
+        chart.Move(transform.up.normalized * Mathf.Abs (h) * speed * Time.fixedDeltaTime);
     }
 
     private void UpdateState () {
