@@ -60,8 +60,9 @@ public class Player : MonoBehaviour {
     // Use this for initialization
     void Start () {
         chart = GetComponent<CharacterController> ();
+        //Debug.Log();
         ani = GetComponent<Animator> ();
-        bullet = (GameObject) Resources.Load ("Prefabs/Element/Bullet");
+        bullet = (GameObject) Resources.Load ("Prefabs/Element/PlayerBullet");
         level = DataManager.levels[id];
     }
 
@@ -82,11 +83,23 @@ public class Player : MonoBehaviour {
     // Public Properties
     //==========================================================================
 
+    public void BeHit() {
+        
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit) {
+        Debug.Log("tap===>");
+    }
+
+    //==========================================================================
+    // Private Properties
+    //==========================================================================
+
     private void Move () {
         // 竖直
         v = Input.GetAxisRaw ("Vertical");
         PlayRotation ();
-        chart.Move(transform.up.normalized * Mathf.Abs (v) * speed * Time.fixedDeltaTime);
+        chart.Move (transform.up.normalized * Mathf.Abs (v) * speed * Time.fixedDeltaTime);
         // 判断是否为0的方式
         if (Mathf.Abs (v) > 0.00001) return;
         // 水平 
@@ -126,8 +139,23 @@ public class Player : MonoBehaviour {
             Instantiate (bullet, transform.position, Quaternion.Euler (transform.eulerAngles));
         }
     }
+    
+    private void OnCollisionEnter2D(Collision2D collision) {
+        //Rigidbody2D rg = gameObject.GetComponent<Rigidbody2D>();
+        //rg.isKinematic = true;
+        //rg.bodyType = RigidbodyType2D.Kinematic;
+        //Debug.Log(rg.bodyType);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) {
+        //Rigidbody2D rg = gameObject.GetComponent<Rigidbody2D>();
+        //rg.isKinematic = false;
+        //rg.bodyType = RigidbodyType2D.Dynamic;
+        //Debug.Log(rg.bodyType);
+    }
 
     private void OnTriggerEnter2D (Collider2D collision) {
+        Debug.Log("Trigger==>");
         switch (collision.gameObject.tag) {
             case "life":
                 Destroy (collision.gameObject);

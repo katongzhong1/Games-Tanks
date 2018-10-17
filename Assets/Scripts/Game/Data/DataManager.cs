@@ -9,7 +9,7 @@ public static class DataManager {
     /// <summary>
     /// 当前关卡.
     /// </summary>
-    public static int stage = 1;
+    public static int stage = 0;
     /// <summary>
     /// 最大关卡.
     /// </summary>
@@ -51,7 +51,7 @@ public static class DataManager {
     /// The current enemys.
     /// </summary>
     public static int curEnemys = 0;
-    public static int curMaxEnemys = 20;
+    public static int curMaxEnemys = 3;
     public static List<int> enemyScores = new List<int> { 100, 200, 300, 500 };
     /// <summary>
     /// The stop.

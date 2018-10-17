@@ -21,7 +21,7 @@ public class Bullet: MonoBehaviour {
     /// <summary>
     /// The rb.
     /// </summary>
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     /// <summary>
     /// 子弹发射的声音
     /// </summary>
@@ -36,15 +36,15 @@ public class Bullet: MonoBehaviour {
     //==========================================================================
     // Use this for initialization
     void Start() {
-        rb = GetComponent<Rigidbody2D>();
-        music = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody>();
+        //music = GetComponent<AudioSource>();
         Vector3 v3 = transform.up.normalized;
         rb.velocity = v3 * speed;
 
         smallExplosion = (GameObject)Resources.Load("Prefabs/Element/Explosion/SmallExplosion");
         bigExplosion   = (GameObject)Resources.Load("Prefabs/Element/Explosion/BigExplosion");
         
-        music.Play();
+        //music.Play();
     }
 
     // Update is called once per frame
@@ -80,8 +80,15 @@ public class Bullet: MonoBehaviour {
                 Instantiate(smallExplosion, this.transform.position, Quaternion.identity);
                 break;
             case "enemy":
+                if (type == 1) {
+                    Destroy(this.gameObject);
+                    Instantiate(bigExplosion, this.transform.position, Quaternion.identity);
+                }
                 break;
             case "play":
+                if (type == 1) {
+                    collision.gameObject.SendMessage("Behit");;
+                }
                 break;
         }
     }

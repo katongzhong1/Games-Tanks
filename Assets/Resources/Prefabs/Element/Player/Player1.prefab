@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4047681721499312}
   - component: {fileID: 212703703801863498}
   - component: {fileID: 95444670253402552}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,8 +39,8 @@ GameObject:
   - component: {fileID: 212172511452032394}
   - component: {fileID: 95792051406008038}
   - component: {fileID: 114264530991273090}
-  - component: {fileID: 143238806171659394}
-  m_Layer: 0
+  - component: {fileID: 143569536309551996}
+  m_Layer: 5
   m_Name: Player1
   m_TagString: player
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1603572890779268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4047681721499312}
@@ -124,7 +124,7 @@ MonoBehaviour:
   level: 1
   curButtlet: 0
   id: 0
---- !u!143 &143238806171659394
+--- !u!143 &143569536309551996
 CharacterController:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,9 +136,9 @@ CharacterController:
   serializedVersion: 2
   m_Height: 0.875
   m_Radius: 0.4375
-  m_SlopeLimit: 180
-  m_StepOffset: 0.3
-  m_SkinWidth: 2
+  m_SlopeLimit: 0
+  m_StepOffset: 0
+  m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212172511452032394

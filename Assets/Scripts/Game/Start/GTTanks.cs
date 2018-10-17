@@ -18,16 +18,16 @@ public class GTTanks : MonoBehaviour {
     /// <summary>
     /// The enemys.
     /// </summary>
-    Vector3 playerOutPosition = new Vector3 (-1.75f, -6f, -1f);
+    Vector3 playerOutPosition = new Vector3 (-1.75f, -6f, 0f);
 
     //==========================================================================
     // Mono Life Cycle
     //==========================================================================
 
     private void Awake () {
-        enemyBorthPosition[0] = new Vector3 (-6f, 6f, -1f);
-        enemyBorthPosition[1] = new Vector3 (-0f, 6f, -1f);
-        enemyBorthPosition[2] = new Vector3 (6f, 6f, -1f);
+        enemyBorthPosition[0] = new Vector3 (-6f, 6f, 0f);
+        enemyBorthPosition[1] = new Vector3 (-0f, 6f, 0f);
+        enemyBorthPosition[2] = new Vector3 (6f, 6f, 0f);
         // ===> 加载 GameObject
         enemyBorth = (GameObject) Resources.Load ("Prefabs/Element/Borth/EnemyBorth");
         playerBorth = (GameObject) Resources.Load ("Prefabs/Element/Borth/PlayerBorth");
