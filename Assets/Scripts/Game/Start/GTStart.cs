@@ -152,7 +152,7 @@ public class GTStart : MonoBehaviour {
         // 
         brick = (GameObject) Resources.Load ("Prefabs/Element/Brick/Brick");
         grass = (GameObject) Resources.Load ("Prefabs/Element/Grass");
-        grid = (GameObject) Resources.Load ("Prefabs/Element/Grid/Grid");
+        grid  = (GameObject) Resources.Load ("Prefabs/Element/Grid/Grid");
         water = (GameObject) Resources.Load ("Prefabs/Element/Water");
         //
         brick_0011 = (GameObject) Resources.Load ("Prefabs/Element/Brick/Brick_0011");

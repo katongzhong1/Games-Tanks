@@ -108,6 +108,7 @@
     <Compile Include="Assets\Scripts\Game\Handler\AI.cs" />
     <Compile Include="Assets\Scripts\Game\Handler\Player.cs" />
     <Compile Include="Assets\Scripts\Game\Sound\Sound.cs" />
+    <Compile Include="Assets\Scripts\Game\Start\EventTest.cs" />
     <Compile Include="Assets\Scripts\Game\Start\GTStart.cs" />
     <Compile Include="Assets\Scripts\Game\Start\GTTanks.cs" />
     <None Include="Assets\Isometric Pack 3d\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
