@@ -35,6 +35,7 @@ public class GTTanks : MonoBehaviour {
         Instantiate (playerBorth, playerOutPosition, Quaternion.identity);
         // ===> 开启协程
         StartCoroutine (CreateEnemy ());
+        //TODO: 添加玩法更加智能的AI
     }
 
     // Use this for initialization
