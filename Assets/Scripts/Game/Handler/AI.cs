@@ -32,7 +32,7 @@ public class AI : MonoBehaviour {
     /// <summary>
     /// The life.
     /// </summary>
-    private int life = 1;
+    public int life = 1;
     /// <summary>
     /// The speed.
     /// </summary>
@@ -58,6 +58,7 @@ public class AI : MonoBehaviour {
     private void Start () {
         InitialSpeedAndLife ();
         ani = GetComponent<Animator> ();
+        ani.SetInteger("life", life);
         chart = GetComponent<CharacterController> ();
         this.transform.GetChild (0).gameObject.SetActive (false);
         bullet = (GameObject) Resources.Load ("Prefabs/Element/Bullet/Bullet");
@@ -89,13 +90,17 @@ public class AI : MonoBehaviour {
             case 0:
                 break;
             case 1:
-                speed = 5f;
-                break;
-            case 2:
                 life += 1;
                 break;
+            case 2:
+                speed = 5f;
+                break;
             case 3:
-                life += 2;
+                speed = 5f;
+                life += 1;
+                break;
+            case 4:
+                life += 1;
                 break;
         }
     }
@@ -125,7 +130,6 @@ public class AI : MonoBehaviour {
 
     private void UpdateState () {
         int bo = (Mathf.Abs (v) > 0.00001 || Mathf.Abs (h) > 0.00001) ? 1 : 0;
-        //ani.SetInteger("IS_RUN", bo);
     }
 
     private void PlayRotation () {
@@ -146,11 +150,14 @@ public class AI : MonoBehaviour {
         GameObject temp = (GameObject) Instantiate (bullet, transform.position, Quaternion.Euler (transform.eulerAngles));
     }
 
-    private void Short () {
+    public void BeShorted () {
         life -= 1;
         if (life < 1) {
             DataManager.enemyCounts[enemyType] += 1;
+            DataManager.curEnemys--;
             Destroy (this.gameObject);
+        } else {
+            ani.SetInteger("life", life);
         }
     }
 }

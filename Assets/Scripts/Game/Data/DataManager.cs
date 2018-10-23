@@ -9,7 +9,7 @@ public static class DataManager {
     /// <summary>
     /// 当前关卡.
     /// </summary>
-    public static int stage = 1;
+    public static int stage = 0;
     /// <summary>
     /// 最大关卡.
     /// </summary>
@@ -58,7 +58,7 @@ public static class DataManager {
     /// </summary>
     public static bool stop;
     public static int[, ] enemys = { 
-        { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 2, 2 },
+        { 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 2, 2 },
         { 6, 6, 2, 3, 2, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0 }
     };
     /// <summary>

@@ -88,7 +88,7 @@ public class Player : MonoBehaviour {
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
-        Debug.Log("tap===>");
+
     }
 
     //==========================================================================
@@ -132,7 +132,7 @@ public class Player : MonoBehaviour {
     /// 开火
     /// </summary>
     private void Fire () {
-        if (curButtlet > maxButtlet) return;
+        //if (curButtlet > maxButtlet) return;
         if (Input.GetKeyDown (KeyCode.Space)) {
             //TODO: 子弹与等级相关
             curButtlet += 1;

@@ -83,8 +83,13 @@ public class Bullet: MonoBehaviour {
                 break;
             case "enemy":
                 if (type == 0) {
+                    //==> 玩家坦克击中enemy
                     Destroy(this.gameObject);
-                    Instantiate(bigExplosion, other.transform.position, Quaternion.identity);
+                    //==> 发送消息被击中
+                    other.gameObject.GetComponent<AI>().BeShorted();
+                    if (other.gameObject.GetComponent<AI>().life < 1) {
+                        Instantiate(bigExplosion, other.transform.position, Quaternion.identity);
+                    }
                 }
                 break;
             case "player":
@@ -93,9 +98,11 @@ public class Bullet: MonoBehaviour {
                     // 触发子弹命中动画
                     Instantiate(bigExplosion, other.transform.position, Quaternion.identity);
                     //TODO: 生成新坦克
-                } else {
-
-                }
+                } 
+                break;
+            case "Bullet":
+                Destroy(this.gameObject);
+                Destroy(other.gameObject);
                 break;
         }
     }
