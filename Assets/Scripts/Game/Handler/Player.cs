@@ -62,7 +62,7 @@ public class Player : MonoBehaviour {
         chart = GetComponent<CharacterController> ();
         //Debug.Log();
         ani = GetComponent<Animator> ();
-        bullet = (GameObject) Resources.Load ("Prefabs/Element/PlayerBullet");
+        bullet = (GameObject) Resources.Load ("Prefabs/Element/Bullet/PlayerBullet");
         level = DataManager.levels[id];
     }
 
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour {
     //==========================================================================
 
     public void BeHit() {
-        
+        Destroy(gameObject);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
@@ -139,23 +139,8 @@ public class Player : MonoBehaviour {
             Instantiate (bullet, transform.position, Quaternion.Euler (transform.eulerAngles));
         }
     }
-    
-    private void OnCollisionEnter2D(Collision2D collision) {
-        //Rigidbody2D rg = gameObject.GetComponent<Rigidbody2D>();
-        //rg.isKinematic = true;
-        //rg.bodyType = RigidbodyType2D.Kinematic;
-        //Debug.Log(rg.bodyType);
-    }
 
-    private void OnCollisionExit2D(Collision2D collision) {
-        //Rigidbody2D rg = gameObject.GetComponent<Rigidbody2D>();
-        //rg.isKinematic = false;
-        //rg.bodyType = RigidbodyType2D.Dynamic;
-        //Debug.Log(rg.bodyType);
-    }
-
-    private void OnTriggerEnter2D (Collider2D collision) {
-        Debug.Log("Trigger==>");
+    private void OnTriggerEnter (Collider collision) {
         switch (collision.gameObject.tag) {
             case "life":
                 Destroy (collision.gameObject);

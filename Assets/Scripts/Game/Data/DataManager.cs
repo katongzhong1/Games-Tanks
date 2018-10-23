@@ -9,7 +9,7 @@ public static class DataManager {
     /// <summary>
     /// 当前关卡.
     /// </summary>
-    public static int stage = 0;
+    public static int stage = 1;
     /// <summary>
     /// 最大关卡.
     /// </summary>

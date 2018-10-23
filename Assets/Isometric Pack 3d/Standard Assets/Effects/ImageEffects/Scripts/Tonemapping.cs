@@ -237,9 +237,9 @@ namespace UnityStandardAssets.ImageEffects
             rt.MarkRestoreExpected(); // keeping luminance values between frames, RT restore expected
 
 #if UNITY_EDITOR
-            if (Application.isPlaying && !freshlyBrewedInternalRt)
-                Graphics.Blit(lumRt, rt, tonemapMaterial, 2);
-            else
+            //if (Application.isPlaying && !freshlyBrewedInternalRt)
+            //    Graphics.Blit(lumRt, rt, tonemapMaterial, 2);
+            //else
                 Graphics.Blit(lumRt, rt, tonemapMaterial, 3);
 #else
 			Graphics.Blit (lumRt, rt, tonemapMaterial, freshlyBrewedInternalRt ? 3 : 2);

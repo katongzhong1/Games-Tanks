@@ -1,5 +1,6 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using GS;
 
 public class AI : MonoBehaviour {
 
@@ -59,7 +60,7 @@ public class AI : MonoBehaviour {
         ani = GetComponent<Animator> ();
         chart = GetComponent<CharacterController> ();
         this.transform.GetChild (0).gameObject.SetActive (false);
-        bullet = (GameObject) Resources.Load ("Prefabs/Element/Bullet");
+        bullet = (GameObject) Resources.Load ("Prefabs/Element/Bullet/Bullet");
         maxTime = Random.Range (0.5f, 2f);
         InvokeRepeating ("Fire", 0f, 1f);
     }
@@ -73,6 +74,10 @@ public class AI : MonoBehaviour {
     // Update is called once per frame
     private void Update () {
 
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit) {
+        changeRotationTime = maxTime;
     }
 
     //==========================================================================
@@ -97,20 +102,11 @@ public class AI : MonoBehaviour {
 
     private void Move () {
         if (changeRotationTime >= maxTime) {
-            int num = Random.Range (0, 8);
-            if (num > 5) {
-                v = -1;
-                h = 0;
-            } else if (num == 0) {
-                v = 1;
-                h = 0;
-            } else if (num == 1 || num == 2) {
-                v = 0;
-                h = -1;
-            } else if (num == 3 || num == 4) {
-                v = 0;
-                h = 1;
-            }
+            int[] l = {-1, 0}, r = {1, 0}, t = {0, -1}, b = {0, 1};
+            Dictionary<int[], int> dic = new Dictionary<int[], int>{{l, 2}, {r, 2}, {t, 3}, {b, 1}};
+            int[] value = dic.GetRandomWithPower();
+            v = value[0];
+            h = value[1];
             changeRotationTime = 0;
             maxTime = Random.Range (0.5f, 2f);
         } else {

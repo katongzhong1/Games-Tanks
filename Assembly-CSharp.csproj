@@ -100,6 +100,14 @@
     <Compile Include="Assets\Isometric Pack 3d\Standard Assets\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
     <Compile Include="Assets\Isometric Pack 3d\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
     <Compile Include="Assets\Scripts\Begin.cs" />
+    <Compile Include="Assets\Scripts\Category\Chained\Audio\AudioEventDriver.cs" />
+    <Compile Include="Assets\Scripts\Category\Chained\Audio\ChainedAudio.cs" />
+    <Compile Include="Assets\Scripts\Category\System\Class.cs" />
+    <Compile Include="Assets\Scripts\Category\System\FuncOrActionOrEvent.cs" />
+    <Compile Include="Assets\Scripts\Category\System\IEnumerable.cs" />
+    <Compile Include="Assets\Scripts\Category\System\IO.cs" />
+    <Compile Include="Assets\Scripts\Category\System\String.cs" />
+    <Compile Include="Assets\Scripts\Category\Tool\Json\Json.cs" />
     <Compile Include="Assets\Scripts\Element\Borth.cs" />
     <Compile Include="Assets\Scripts\Element\Bullet.cs" />
     <Compile Include="Assets\Scripts\Element\Explosion.cs" />

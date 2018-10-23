@@ -56,22 +56,24 @@ public class Bullet: MonoBehaviour {
     // Collider Funtions
     //==========================================================================
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        // 销毁子弹
+    private void OnTriggerEnter(Collider other) {
+
         // 更新子弹数
-        switch (collision.tag) {
+        switch (other.tag) {
             case "brick":
                 Destroy(this.gameObject);
-                Destroy(collision.gameObject);
+                Destroy(other.gameObject);
                 // 触发子弹命中动画
                 Instantiate(smallExplosion, this.transform.position, Quaternion.identity);
                 break;
             case "grid":
                 Destroy(this.gameObject);
-                if (type == 0 && DataManager.levels[0] == 3) {
+                if (type == 1 && DataManager.levels[0] == 3) {
                     //TODO: 判断是否
-                    Destroy(collision.gameObject);
+                    Destroy(other.gameObject);
                 }
+                // 触发子弹命中动画
+                Instantiate(smallExplosion, this.transform.position, Quaternion.identity);
                 break;
             case "home":
                 break;
@@ -80,14 +82,19 @@ public class Bullet: MonoBehaviour {
                 Instantiate(smallExplosion, this.transform.position, Quaternion.identity);
                 break;
             case "enemy":
-                if (type == 1) {
+                if (type == 0) {
                     Destroy(this.gameObject);
-                    Instantiate(bigExplosion, this.transform.position, Quaternion.identity);
+                    Instantiate(bigExplosion, other.transform.position, Quaternion.identity);
                 }
                 break;
-            case "play":
+            case "player":
                 if (type == 1) {
-                    collision.gameObject.SendMessage("Behit");;
+                    Destroy(other.gameObject);
+                    // 触发子弹命中动画
+                    Instantiate(bigExplosion, other.transform.position, Quaternion.identity);
+                    //TODO: 生成新坦克
+                } else {
+
                 }
                 break;
         }
