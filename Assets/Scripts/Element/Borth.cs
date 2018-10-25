@@ -43,7 +43,7 @@ public class Borth : MonoBehaviour {
         if (type == 0) {
             //==> Enemy
             DataManager.curEnemys += 1;
-            int etype = DataManager.enemys[DataManager.stage, DataManager.dieEnemys + DataManager.curEnemys];
+            int etype = DataManager.enemys[DataManager.stage, DataManager.dieEnemys + DataManager.curEnemys - 1];
             Instantiate (enemys[etype], transform.position, Quaternion.identity);
         } else if (type == 1) {
             //==> Player1

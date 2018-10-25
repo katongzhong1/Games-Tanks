@@ -29,12 +29,12 @@ public class GTTanks : MonoBehaviour {
         enemyBorthPosition[1] = new Vector3 (-0f, 6f, 0f);
         enemyBorthPosition[2] = new Vector3 (6f, 6f, 0f);
         // ===> 加载 GameObject
-        enemyBorth = (GameObject) Resources.Load ("Prefabs/Element/Borth/EnemyBorth");
-        playerBorth = (GameObject) Resources.Load ("Prefabs/Element/Borth/PlayerBorth");
+        enemyBorth = (GameObject)Resources.Load("Prefabs/Element/Borth/EnemyBorth");
+        playerBorth = (GameObject)Resources.Load("Prefabs/Element/Borth/PlayerBorth");
         // ===> player
-        Instantiate (playerBorth, playerOutPosition, Quaternion.identity);
+        Instantiate(playerBorth, playerOutPosition, Quaternion.identity);
         // ===> 开启协程
-        StartCoroutine (CreateEnemy ());
+        StartCoroutine(CreateEnemy());
         //TODO: 添加玩法更加智能的AI
     }
 

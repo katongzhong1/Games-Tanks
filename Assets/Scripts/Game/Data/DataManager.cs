@@ -58,8 +58,8 @@ public static class DataManager {
     /// </summary>
     public static bool stop;
     public static int[, ] enemys = { 
-        { 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 2, 2 },
-        { 6, 6, 2, 3, 2, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0 }
+        { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 2, 2 },
+        { 6, 4, 2, 3, 2, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0 }
     };
     /// <summary>
     /// The maps.
