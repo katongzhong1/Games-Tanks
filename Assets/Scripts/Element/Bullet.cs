@@ -94,13 +94,17 @@ public class Bullet: MonoBehaviour {
                 break;
             case "player":
                 if (type == 1) {
-                    Destroy(other.gameObject);
-                    // 触发子弹命中动画
-                    Instantiate(bigExplosion, other.transform.position, Quaternion.identity);
-                    //TODO: 生成新坦克
+                    Destroy(gameObject);
+                    if (other.transform.GetChild(0).gameObject.activeInHierarchy == false) {
+                        Destroy(other.gameObject);
+                        // 触发子弹命中动画
+                        Instantiate(bigExplosion, other.transform.position, Quaternion.identity);
+                        //TODO: 生成新坦克
+                    }
                 } 
                 break;
             case "Bullet":
+                //TODO:
                 Destroy(this.gameObject);
                 Destroy(other.gameObject);
                 break;
