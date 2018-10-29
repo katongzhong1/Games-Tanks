@@ -36,7 +36,7 @@ public class AI : MonoBehaviour {
     /// <summary>
     /// The speed.
     /// </summary>
-    private float speed = 3f;
+    private float speed = 2f;
     /// <summary>
     /// The h.
     /// </summary>
@@ -100,20 +100,48 @@ public class AI : MonoBehaviour {
                 life += 1;
                 break;
             case 4:
+                break;
+            case 5:
                 life += 1;
+                break;
+            case 6:
+                life += 1;
+                break;
+            case 7:
+                life += 2;
                 break;
         }
     }
 
+    private void intelligenceMove() {
+
+    }
+
     private void Move () {
+        int x = (int)(gameObject.transform.position.x + 6.5);
+        int y = 12 - (int)(gameObject.transform.position.y + 6.5);
+        Debug.Log("x==>"+ x + "y==>" + y);
+        //TODO:定位当前位置
         if (changeRotationTime >= maxTime) {
             int[] l = {-1, 0}, r = {1, 0}, t = {0, -1}, b = {0, 1};
-            Dictionary<int[], int> dic = new Dictionary<int[], int>{{l, 2}, {r, 2}, {t, 3}, {b, 1}};
+            Dictionary<int[], int> dic = new Dictionary<int[], int>();
+            if (!(v == -1 && h == 0)) {
+                dic.Add(l, 2);
+            }
+            if (!(v == 1 && h == 0)) {
+                dic.Add(r, 2);
+            }
+            if (!(v == 0 && h == -1)) {
+                dic.Add(t, 2);
+            }
+            if (!(v == 0 && h == 1)) {
+                dic.Add(b, 2);
+            }
             int[] value = dic.GetRandomWithPower();
             v = value[0];
             h = value[1];
             changeRotationTime = 0;
-            maxTime = Random.Range (0.5f, 2f);
+            maxTime = Random.Range (0.5f, 3f);
         } else {
             changeRotationTime += Time.fixedDeltaTime;
         }
@@ -155,6 +183,7 @@ public class AI : MonoBehaviour {
         if (life < 1) {
             DataManager.enemyCounts[enemyType] += 1;
             DataManager.curEnemys--;
+            DataManager.dieEnemys++;
             Destroy (this.gameObject);
         } else {
             ani.SetInteger("life", life);

@@ -83,7 +83,7 @@ Animator:
   m_GameObject: {fileID: 1152830030122322}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2c5f2b0dc3ba541db972122f4302177e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 50c9ee929b82e409f89f39401c424c52, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 7
+  life: 1
 --- !u!143 &143238420301768708
 CharacterController:
   m_ObjectHideFlags: 1
