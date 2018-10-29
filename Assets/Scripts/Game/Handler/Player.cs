@@ -64,6 +64,7 @@ public class Player : MonoBehaviour {
         ani = GetComponent<Animator> ();
         bullet = (GameObject) Resources.Load ("Prefabs/Element/Bullet/PlayerBullet");
         level = DataManager.levels[id];
+        Invoke("DownTimeShield", 2);
     }
 
     // Update is called once per Times
@@ -149,7 +150,7 @@ public class Player : MonoBehaviour {
             case "shield":
                 Destroy (collision.gameObject);
                 this.transform.GetChild (0).gameObject.SetActive (true);
-                this.transform.GetChild (0).gameObject.SendMessage ("startTime");
+                Invoke("DownTimeShield", 5);
                 break;
             case "ship":
                 Destroy (collision.gameObject);
@@ -161,6 +162,7 @@ public class Player : MonoBehaviour {
                 if (level < 4) {
                     level += 1;
                     DataManager.levels[id] = level;
+                    ani.SetInteger("life", level);
                 }
                 break;
             case "gun":
@@ -186,5 +188,9 @@ public class Player : MonoBehaviour {
 
     private void BombAwake () {
         DataManager.stop = false;
+    }
+
+    private void DownTimeShield() {
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 }
